@@ -109,10 +109,7 @@ class Xml(val $root: MutableCell, val $path: Vector[Either[Int, String]] = Vecto
     }
   
   override def toString =
-    try {
-      val x = Xml.format(this)(formatters.compact()($ast))
-      s"""xml""${'"'}$x""""""
-    } catch {
+    try Xml.format(this)(formatters.compact()($ast)) catch {
       case e: Exception => "undefined"
     }
 }
@@ -134,10 +131,7 @@ class XmlBuffer(val $root: MutableCell, val $path: Vector[Either[Int, String]] =
     }
   
   override def toString =
-    try {
-      val x = Xml.format(this)(formatters.compact()($ast))
-      s"""xml""${'"'}$x""""""
-    } catch {
+    try XmlBuffer.format(this)(formatters.compact()($ast)) catch {
       case e: Exception => "undefined"
     }
 }
